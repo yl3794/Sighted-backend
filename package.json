@@ -1,0 +1,39 @@
+{
+  "name": "sighted-backend",
+  "version": "1.0.0",
+  "description": "REST API powering the [Sighted iOS app](https://github.com/yl3794/Sighted-iOS) — a wildlife sighting platform built for field researchers and nature enthusiasts in Ithaca.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yl3794/Sighted-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yl3794/Sighted-backend/issues"
+  },
+  "homepage": "https://github.com/yl3794/Sighted-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.6.1",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "@types/pg": "^8.16.0",
+    "nodemon": "^3.1.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
