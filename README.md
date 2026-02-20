@@ -94,4 +94,4 @@ sightings    — id, user_id, species, notes, photo_url, location (PostGIS POINT
 ## Author
 
 Ye Lin — Cornell University, Computer Science '28  
-[GitHub](https://github.com/yl3794) · [LinkedIn](www.linkedin.com/in/yelincs)
+[GitHub](https://github.com/yl3794) · [LinkedIn](https://www.linkedin.com/in/yelincs)
