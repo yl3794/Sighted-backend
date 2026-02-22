@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import pool from '../db/pool'
+import { verifyToken } from '../middleware/auth'
 
 const router = Router()
 
-router.post('/', async(req, res) => {
+router.post('/', verifyToken, async(req, res) => {
     const { species, notes, photo_url, latitude, longitude, user_id } = req.body
 
     const result = await pool.query(
@@ -16,7 +17,7 @@ router.post('/', async(req, res) => {
     res.json(result.rows[0])
 })
 
-router.get('/', async(req, res) => {
+router.get('/', verifyToken, async(req, res) => {
     const result = await pool.query(
         `SELECT * FROM sightings ORDER BY created_at DESC`
     )
