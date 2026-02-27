@@ -5,13 +5,21 @@ import { verifyToken } from '../middleware/auth'
 const router = Router()
 
 router.post('/', verifyToken, async(req, res) => {
-    const { species, notes, photo_url, latitude, longitude, user_id } = req.body
+    const { species, notes, photo_url, latitude, longitude } = req.body
+    const firebaseUid = (req as any).user.uid
+
+    const userResult = await pool.query(
+        `SELECT id FROM users WHERE firebase_uid = $1`,
+        [firebaseUid]
+    )
+
+    const userId = userResult.rows[0].id
 
     const result = await pool.query(
-        `INSERT INTO sightings (species, notes, photo_url, latitude, longitude, user_id)
+        `INSERT INTO sightings (species, notes, photo_url, latitude, longitude, userId)
         VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING *`,
-        [species, notes, photo_url, latitude, longitude, user_id]
+        [species, notes, photo_url, latitude, longitude, userId]
     )
     
     res.json(result.rows[0])
