@@ -16,7 +16,7 @@ router.post('/', verifyToken, async(req, res) => {
     const userId = userResult.rows[0].id
 
     const result = await pool.query(
-        `INSERT INTO sightings (species, notes, photo_url, latitude, longitude, userId)
+        `INSERT INTO sightings (species, notes, photo_url, latitude, longitude, user_id)
         VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING *`,
         [species, notes, photo_url, latitude, longitude, userId]
@@ -25,7 +25,8 @@ router.post('/', verifyToken, async(req, res) => {
     res.json(result.rows[0])
 })
 
-router.get('/', verifyToken, async(req, res) => {
+// router.get('/', verifyToken, async(req, res) => {
+router.get('/', async(req, res) => {
     const result = await pool.query(
         `SELECT * FROM sightings ORDER BY created_at DESC`
     )
