@@ -25,8 +25,7 @@ router.post('/', verifyToken, async(req, res) => {
     res.json(result.rows[0])
 })
 
-// router.get('/', verifyToken, async(req, res) => {
-router.get('/', async(req, res) => {
+router.get('/', verifyToken, async(req, res) => {
     const result = await pool.query(
         `SELECT * FROM sightings ORDER BY created_at DESC`
     )
